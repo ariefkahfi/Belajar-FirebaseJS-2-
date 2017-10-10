@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List Book</title>
+</head>
+<body>
+    <table id="tabel" border="2">
+        <tr>
+            <td>isbn</td>
+            <td>Nama Buku</td>
+        </tr>
+    </table>
+</body>
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+    let config = {
+        apiKey: "AIzaSyB03SN3vVnKhlYpE9RXXFWxczgOrGyKK2I",
+        authDomain: "belajar-firebase3-2a94e.firebaseapp.com",
+        databaseURL: "https://belajar-firebase3-2a94e.firebaseio.com",
+        storageBucket: "belajar-firebase3-2a94e.appspot.com"
+    };
+    firebase.initializeApp(config);
+
+
+    let firebaseDatabase = firebase.database().ref('/books');
+
+
+
+    let loadData = ()=>{
+        firebaseDatabase.on('value',function(dataSnap){
+            $('#tabel').empty();
+            dataSnap.forEach(function(childs){
+                $('#tabel').append(
+                    `<tr>
+                      <td>${childs.child('isbn').val()}</td>
+                      <td>${childs.child('judul').val()}</td>
+                 </tr>`
+                );
+            });
+        });
+    };
+
+    loadData();
+</script>
+</html>

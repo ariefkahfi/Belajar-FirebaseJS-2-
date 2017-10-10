@@ -1,0 +1,10 @@
+{
+  "name": "BelajarFirebase3",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "^4.16.2",
+    "firebase": "^4.5.0",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.3.0"
+  }
+}
